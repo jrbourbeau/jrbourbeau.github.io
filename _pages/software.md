@@ -3,38 +3,28 @@ layout: single
 title: Software
 permalink: /software/
 author_profile: true
-type: pages
-scope:
-    path: ""
-    type: pages
 ---
 
 I'm an active developer, maintainer, or contributor to several projects in the Python data science community. Projects I maintain or have made significant contributions to include:
 
+### Dask
+
+[Dask](http://docs.dask.org/) is a library for flexible parallel computing in Python. It provides parallelized NumPy array and Pandas DataFrame objects as well as a task scheduling interface for scientific computing in larger-than-memory or distributed environments.
+
+
 ### PyCondor
 
-Python API for submitting tasks to an HTCondor distributed cluster
-<br>
-[GitHub](https://github.com/jrbourbeau/pycondor) [Documentation](https://jrbourbeau.github.io/pycondor/)
+[PyCondor](https://jrbourbeau.github.io/pycondor/) is a Python package for constructing and submitting jobs to an HTCondor distributed cluster. It was designed to provide built-in functionality to help automate common workflow tasks with a user-friendly API.
+
 
 ### PyUnfold
 
-Python package for implementing Bayesian iterative unfolding
-<br>
-[GitHub](https://github.com/jrbourbeau/pyunfold) [Documentation](https://jrbourbeau.github.io/pyunfold/)
-[Publication](https://doi.org/10.21105/joss.00741)
+[PyUnfold](https://jrbourbeau.github.io/pyunfold/) is a Python package for implementing Bayesian iterative unfolding. It is built on top of the Python scientific computing stack, bringing iterative unfolding methods fully into the Python ecosystem.
 
-### Dask
+- J. Bourbeau et al., (2018). *PyUnfold: A Python package for iterative unfolding*. Journal of Open Source Software, 3(26), 741, [https://doi.org/10.21105/joss.00741](https://doi.org/10.21105/joss.00741).
 
-Python library for parallel and distributed computing
-<br>
-[GitHub](https://github.com/dask/dask) [Documentation](http://dask.pydata.org/en/latest/)
+<hr>
 
+I also contribute to other projects such as [scikit-learn](http://scikit-learn.org/stable/), [Dask-ML](http://ml.dask.org/), [MLxtend](http://rasbt.github.io/mlxtend/), and more.
 
-I've also made contributions to:
-
-- [scikit-learn](https://github.com/scikit-learn/scikit-learn) &mdash; Python machine learning library.
-- [MLxtend](https://github.com/rasbt/mlxtend) &mdash; Extension and helper modules for Python's data analysis and machine learning libraries.
-
-
-Full details are available on my [GitHub profile](http://github.com/jrbourbeau).
+Details about my open source contributions are available on [GitHub](http://github.com/jrbourbeau).

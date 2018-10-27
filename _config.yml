@@ -12,8 +12,8 @@ locale                   : "en-US"
 title                    : "James Bourbeau"
 title_separator          : "-"
 name                     : "James Bourbeau"
-description              : "ASDFASDFASF"
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+description              : ""
+url                      : "https://jrbourbeau.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "jrbourbeau/jrbourbeau.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
@@ -85,35 +85,22 @@ analytics:
 # Site Author
 author:
   name             : "James Bourbeau"
-  avatar           : "/assets/images/bio-photo.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Physics researcher. Interested in machine learning, data science, and software development."
+  avatar           : "/assets/images/bio-photo-small.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "Physics Ph.D. candidate. Interested in machine learning, data science, and software development."
   location         : "Madison, WI"
-  email            : "james@jamesbourbeau.com"
-  uri              :
-  home             : # null (default), "absolute or relative url to link to author home"
-  bitbucket        :
-  codepen          :
-  dribbble         :
-  flickr           :
-  facebook         :
-  foursquare       :
-  github           : "jrbourbeau"
-  gitlab           :
-  google_plus      :
-  keybase          :
-  instagram        :
-  lastfm           :
-  linkedin         : "jrbourbeau" # "john-doe-12345678" (the last part of your profile url, e.g. https://www.linkedin.com/in/john-doe-12345678)
-  pinterest        :
-  soundcloud       :
-  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. https://stackoverflow.com/users/123456/username)
-  steam            : # "steamId" (the last part of your profile url, e.g. https://steamcommunity.com/id/steamId/)
-  tumblr           :
-  twitter          : "__jrbourbeau__"
-  vine             :
-  weibo            :
-  xing             :
-  youtube          : # "https://youtube.com/c/MichaelRoseDesign"
+  links:
+    - label: "E-mail"
+      icon: "far fa-envelope"
+      url: "mailto:james@jamesbourbeau.com"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/jrbourbeau"
+    - label: "GitHub"
+      icon: "fab fa-github"
+      url: "https://github.com/jrbourbeau"
+    - label: "Twitter"
+      icon: "fab fa-twitter"
+      url: "https://twitter.com/__jrbourbeau__"
 
 
 # Reading Files
@@ -251,9 +238,8 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       read_time: false
-      # read_time: true
       comments: # true
       share: true
-      related: true
+      related: false

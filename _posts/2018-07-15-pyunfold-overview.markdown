@@ -4,7 +4,7 @@ tags:
   - python
   - statistics
   - deconvolution
-toc: true
+toc: false
 toc_label: "Table of contents"
 date: July 9, 2018
 ---
