@@ -18,10 +18,10 @@ Ph.D. candidate experienced in working with real-world data, building machine le
 ## Programming Skills
 
 #### Python
-NumPy, SciPy, Pandas, scikit-learn, XGBoost, Keras, TensorFlow, Dask, matplotlib, Sphinx
+NumPy, SciPy, Pandas, scikit-learn, XGBoost, Keras, TensorFlow, Dask, Matplotlib, Jupyter, pytest, Sphinx
 
 #### Other tools
-git, Bash, Docker, make, HDF5, HTCondor, Latex
+git, Bash, Docker, make, continuous integration (Travis CI, AppVeyor, CircleCI), HDF5, HTCondor, Latex
 
 
 
@@ -54,7 +54,8 @@ Research Assistant || Jan 2016 &mdash; Present || Madison, WI
 #### Quansight
 Support Engineer || Oct 2018 &mdash; Present
 
-- Provided support for scaling data processing and analysis pipelines using open source distributed computing Python libraries
+- Collaborated with data scientists and software engineers to scale data analysis workflows on distributed platforms
+- Contributed to open source libraries in the Python scientific computing ecosystem
 
 
 #### University of Wisconsin High Energy Phenomenology Group
@@ -80,20 +81,3 @@ M. Winter, J. Bourbeau, M. Meehan et al., *Particle Identification In Camera Ima
 J. Bourbeau, P. Desiati, J.C. Diaz Valez, S. Westerhoff et al. (IceCube Collaboration), *Cosmic-Ray Anisotropy with Seven Years of Data from IceCube and IceTop*, Proceedings of the 35th International Cosmic Ray Conference. [https://pos.sissa.it/301/474/pdf](https://pos.sissa.it/301/474/pdf).
 
 Y. Bai, J. Bourbeau, and T. Lin. *Dark Matter Searches with a Mono-Z' Jet*. JHEP **1506**, 205 (2015). [http://arxiv.org/pdf/1504.01395.pdf](http://arxiv.org/pdf/1504.01395.pdf).
-
-
-
-## Selected Presentations
-
-"Supervised machine learning in Python with scikit-learn"<br>
-Madison Python meetup (MadPy)&mdash;Madison, WI. March 2018.<br>
-[ [Slides](https://jrbourbeau.github.io/madpy-ml-sklearn-2018/) ] [ [GitHub repo](https://github.com/jrbourbeau/madpy-ml-sklearn-2018) ]
-
-"Introduction to the shell and Python"<br>
-IceCube Software Bootcamp&mdash;Madison, WI. June 2016.<br>
-
-"Dark Matter Searches with a Mono-Z' Jet"<br>
-Phenomenology 2015 Symposium&mdash;Pittsburgh, PA. May 2015.
-
-"Development of a Fast Timing System for the ATLAS Forward Proton Detector"<br>
-UT-Arlington Annual Celebration of Excellence by Students. March 2012.
