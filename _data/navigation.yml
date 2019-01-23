@@ -5,5 +5,7 @@ main:
     url: /software/
   - title: "R&eacute;sum&eacute;"
     url: /resume/
+  - title: "Talks"
+    url: /talks/
   - title: "Blog"
     url: /blog-archive/
