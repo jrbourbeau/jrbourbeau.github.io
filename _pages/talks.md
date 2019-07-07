@@ -6,6 +6,11 @@ author_profile: false
 toc: false
 ---
 
+#### Febuary 7, 2019: Madison Python meetup (Madison, WI)
+_Parallel Computing in Python with Dask_
+[ [GitHub repo](https://github.com/jrbourbeau/madpy-dask) ]
+
+
 #### October 30, 2018: WIPAC X-meeting (Madison, WI)
 _Parallel Computing with Dask_
 [ [GitHub repo](https://github.com/jrbourbeau/xmeeting-dask) ]

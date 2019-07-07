@@ -11,23 +11,23 @@ toc: false
 
 ## Professional Summary
 
-Ph.D. candidate experienced in working with real-world data, building machine learning models, software development, and effectively communicating complex topics to both technical and non-technical stakeholders.
+Software Engineer experienced in working with real-world data, building machine learning models, parallel computing, and effectively communicating complex topics to both technical and non-technical stakeholders.
 
 
 
-## Programming Skills
+<!-- ## Programming Skills
 
 #### Python
 NumPy, SciPy, Pandas, scikit-learn, XGBoost, Keras, TensorFlow, Dask, Matplotlib, Jupyter, pytest, Sphinx
 
 #### Other tools
-git, Bash, Docker, make, continuous integration (Travis CI, AppVeyor, CircleCI), HDF5, HTCondor, Latex
+git, Bash, Docker, make, continuous integration (Travis CI, AppVeyor, CircleCI), HDF5, HTCondor, Latex -->
 
 
 
 ## Education
 
-Ph.D. in Physics (graduating May 2019)<br>
+Ph.D. in Physics<br>
 University of Wisconsin&mdash;Madison
 
 M.S. in Physics<br>
@@ -40,8 +40,23 @@ University of Texas at Arlington
 
 ## Professional Experience
 
+
+#### Quansight
+Software Engineer / June 2019 &mdash; Present / Madison, WI
+
+- Contributed to and helped maintain projects in the open source scientific Python ecosystem
+- Worked on consulting projects to help clients leverage open source tools for data science applications
+
+
+Support Engineer / Oct 2018 &mdash; May 2019 / Madison, WI
+
+
+- Collaborated with data scientists and software engineers to scale data analysis workflows on distributed platforms
+- Contributed to open source libraries in the Python scientific computing ecosystem
+
+
 #### Wisconsin IceCube Particle Astrophysics Center
-Research Assistant || Jan 2016 &mdash; Present || Madison, WI
+Research Assistant / Jan 2016 &mdash; May 2019 / Madison, WI
 
 - Built a machine learning analysis framework to automate both classification and regression tasks on a 2 TB dataset of comic-ray samples
 - Developed a [Python package](https://github.com/jrbourbeau/pyunfold) that implements a Bayesian statistical deconvolution algorithm
@@ -51,21 +66,15 @@ Research Assistant || Jan 2016 &mdash; Present || Madison, WI
 - Developed strong written and verbal communication skills working as a member of a large scientific collaboration with hundreds of members
 
 
-#### Quansight
-Support Engineer || Oct 2018 &mdash; Present
-
-- Collaborated with data scientists and software engineers to scale data analysis workflows on distributed platforms
-- Contributed to open source libraries in the Python scientific computing ecosystem
-
-
 #### University of Wisconsin High Energy Phenomenology Group
-Research Assistant || May 2014 &mdash; July 2015 || Madison, WI
+Research Assistant / May 2014 &mdash; July 2015 / Madison, WI
 
 - Translated complex theoretical model predictions into real-world observables
 - Communicated results to scientific community via a publication and conference presentations
 
+
 #### University of Texas at Arlington
-Undergraduate Research Assistant || May 2010 &mdash; May 2013 || Arlington, TX
+Undergraduate Research Assistant / May 2010 &mdash; May 2013 / Arlington, TX
 
 - Performed statistical analysis and visualization of data collected in our lab
 - Maintained and further developed research group's C++ codebase
