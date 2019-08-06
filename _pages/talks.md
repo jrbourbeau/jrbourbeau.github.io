@@ -6,6 +6,11 @@ author_profile: false
 toc: false
 ---
 
+#### July 31, 2019: Data-Driven Wisconsin (Milwaukee, WI)
+_Parallel Computing in Python with Dask_
+[ [GitHub repo](https://github.com/jrbourbeau/ddw-dask) ] [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jrbourbeau/ddw-dask/master?urlpath=lab/tree/ddw-dask.ipynb)
+
+
 #### Febuary 7, 2019: Madison Python meetup (Madison, WI)
 _Parallel Computing in Python with Dask_
 [ [GitHub repo](https://github.com/jrbourbeau/madpy-dask) ]
