@@ -1,4 +1,4 @@
-baseurl = "https://www.github.io/jrbourbeau"
+baseurl = "https://jrbourbeau.github.io/"
 title = "James Bourbeau"
 
 theme = "hugo-coder"
