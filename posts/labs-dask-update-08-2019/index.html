@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="James Bourbeau">
+    <meta name="description" content="James Bourbeau&#39;s personal website">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Quansight Labs Dask Update - August 2019"/>
+<meta name="twitter:description" content="This post originally appeared in the Quansight Labs blog
+This post provides an update on some recent Dask-related activities the Quansight Labs team has been working on.
+Dask community work order Through a community work order (CWO) with the D. E. Shaw group, the Quansight Labs team has been able to dedicate developer time towards bug fixes and feature requests for Dask. This work has touched on several portions of the Dask codebase, but generally have centered around using Dask Arrays with the distributed scheduler."/>
+
+    <meta property="og:title" content="Quansight Labs Dask Update - August 2019" />
+<meta property="og:description" content="This post originally appeared in the Quansight Labs blog
+This post provides an update on some recent Dask-related activities the Quansight Labs team has been working on.
+Dask community work order Through a community work order (CWO) with the D. E. Shaw group, the Quansight Labs team has been able to dedicate developer time towards bug fixes and feature requests for Dask. This work has touched on several portions of the Dask codebase, but generally have centered around using Dask Arrays with the distributed scheduler." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jrbourbeau.github.io/posts/labs-dask-update-08-2019/" />
+<meta property="article:published_time" content="2019-08-27T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-08-27T00:00:00&#43;00:00"/>
+
+
+    
+      <base href="https://jrbourbeau.github.io/posts/labs-dask-update-08-2019/">
+    
+    <title>
+  Quansight Labs Dask Update - August 2019 · James Bourbeau
+</title>
+
+    
+      <link rel="canonical" href="https://jrbourbeau.github.io/posts/labs-dask-update-08-2019/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://jrbourbeau.github.io/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+      <link rel="stylesheet" href="https://jrbourbeau.github.io/css/custom.css" />
+    
+
+    
+    
+    <link rel="icon" type="image/png" href="https://jrbourbeau.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://jrbourbeau.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.55.6" />
+  </head>
+
+  <body class=" ">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://jrbourbeau.github.io/">
+      James Bourbeau
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://jrbourbeau.github.io/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://jrbourbeau.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://jrbourbeau.github.io/resume/">Resume</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Quansight Labs Dask Update - August 2019</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2019-08-27T00:00:00Z'>
+                August 27, 2019
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              3 minutes read
+            </span>
+          </div>
+          
+          
+        </div>
+      </header>
+
+      <div>
+        
+
+<p><em>This post originally appeared in the <a href="https://labs.quansight.org/blog/2019/08/labs-dask-update/">Quansight Labs blog</a></em></p>
+
+<p>This post provides an update on some recent <a href="https://dask.org/">Dask</a>-related activities the Quansight Labs team has been working on.</p>
+
+<h2 id="dask-community-work-order">Dask community work order</h2>
+
+<p>Through a community work order (CWO) with <a href="https://www.deshaw.com/">the D. E. Shaw group</a>, the Quansight Labs team has been able to dedicate developer time towards bug fixes and feature requests for Dask. This work has touched on several portions of the Dask codebase, but generally have centered around using <a href="https://docs.dask.org/en/latest/array.html">Dask Arrays</a> with the <a href="https://distributed.dask.org/en/latest/">distributed scheduler</a>.</p>
+
+<p>For instance, performance improvement in how Dask handles large graphs were made in <a href="https://github.com/dask/dask/pull/4918">Dask PR #4918</a> and <a href="https://github.com/dask/distributed/pull/2594">Distributed PR #2594</a>, while several Dask Array bug fixes and support for asymmetric overlapping computations were included in <a href="https://github.com/dask/dask/pull/5256">Dask PR #5256</a>, <a href="https://github.com/dask/dask/pull/5151">Dask PR #5151</a>, and <a href="https://github.com/dask/dask/pull/4863">Dask PR #4863</a>.</p>
+
+<p>This CWO approach allows institutions, in this case the D. E. Shaw group, to fund development in community-driven open source projects while still respecting how these projects make decisions. To learn more about funding projects through CWOs, check out <a href="http://labs.quansight.org/blog/2019/05/community-driven-opensource-funded-development/">this post</a> by Ralf Gommers which discusses the CWO model in detail.</p>
+
+<h2 id="conferences">Conferences</h2>
+
+<p>In addition to working on Dask directly, we&rsquo;ve also been engaging the broader scientific Python community through attending conferences. In particular, developers at Quansight, Anaconda, and NVIDIA organized a Dask sprint at the SciPy 2019 conference. Throughout the two-day sprint, core developers were able to help sprint attendees become more familiar with the Dask codebase, set up local development environments, and even get new pull requests from sprinters submitted, reviewed, and merged into Dask! I personally had a great time at SciPy and hope to see lots of familiar faces again next year.</p>
+
+<p>Likewise, in July I spoke about Dask at the Data-Driven Wisconsin 2019 conference. Following my talk, I had several engaging discussions with other conference attendees and it was really gratifying to see all the enthusiasm surrounding Dask. The materials presented at the talk can be found <a href="https://github.com/jrbourbeau/ddw-dask">on GitHub</a> and a live, interactive version is available <a href="https://mybinder.org/v2/gh/jrbourbeau/ddw-dask/master?urlpath=lab/tree/ddw-dask.ipynb">on mybinder.org</a>.</p>
+
+<h2 id="maintenance-and-development">Maintenance and development</h2>
+
+<p>Finally, there&rsquo;s been a push for a more coordinated effort towards project maintenance and development by core Dask maintainers at Quansight, Anaconda, and NVIDIA. As part of this effort, we spend a portion of our work week on day-to-day project maintenance tasks (e.g. responding on issues, reviewing pull requests, fixing CI systems, etc.) as well as working on contributions that require significant amounts of time or expertise to implement (e.g. large-scale refactoring, adding new features, writing documentation, etc.). Today, Dask users typically get a quicker response from a core maintainer when opening an issue or pull request, in part, because of these efforts. I, and perhaps other core maintainers, hope to write more about this process in the future.</p>
+
+      </div>
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+     © 2019
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>

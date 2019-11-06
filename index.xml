@@ -6,10 +6,21 @@
     <description>Recent content on James Bourbeau</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 01 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jrbourbeau.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Quansight Labs Dask Update - August 2019</title>
+      <link>https://jrbourbeau.github.io/posts/labs-dask-update-08-2019/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jrbourbeau.github.io/posts/labs-dask-update-08-2019/</guid>
+      <description>This post originally appeared in the Quansight Labs blog
+This post provides an update on some recent Dask-related activities the Quansight Labs team has been working on.
+Dask community work order Through a community work order (CWO) with the D. E. Shaw group, the Quansight Labs team has been able to dedicate developer time towards bug fixes and feature requests for Dask. This work has touched on several portions of the Dask codebase, but generally have centered around using Dask Arrays with the distributed scheduler.</description>
+    </item>
     
     <item>
       <title>Mocking in Software Tests</title>
