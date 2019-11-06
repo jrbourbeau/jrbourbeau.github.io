@@ -1,0 +1,23 @@
+dist: xenial
+language: python
+python:
+  - 3.7
+
+install:
+  # Install hugo
+  - wget -O /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.55.6/hugo_extended_0.55.6_Linux-64bit.deb
+  - sudo dpkg -i /tmp/hugo.deb
+
+env:
+  global:
+    # Doctr deploy key for jrbourbeau/jrbourbeau.github.io
+    - secure: "qsMKYBQVvbw22PR/xNs+3iQm/EWT9glm93xRIR9BoUpeo9Fx3H1Yz39cnu8Zla31koOqEjac8bWFDe5SOSTHuixonBv8CWu3QsLjss5IW8RnJZ9S0PzAYN0qm8AT746TtnfTlEgNehSU+0c/5iO+fkiJ3ZsLpOtWW0A83JDGVNvxiocR1lxVfNMDMJW8SpR25kgX8Pv9rntKJtm5VL5DOYTojPAdGcZuCLbzBu18B/T9fVZScnt9NF6c+mCa3C9uOBHSpgFn1Ua2oC2LNWJN64iOdhK4RWIBCBgrkyRrUdaZNdAxGPSPBw1BKTDZwHr7MJwcdCRKB3S2nQ5aNkU4RYvLDyVoTQgSR1cOWC9db/LNZNyPh9fTs9Yh5Ck5phGXpZZLBQYAvhvfFvPr9x1eIxDP4MPdlCqqZE+jh72WSdWUBFGyOHyUwZIvks3TWqnT07moiSvBPkmuDpEpXjbFQ3DiCtYaqtePGEHC8RnbNn4bhowtas0PU98R5D0fBHXhfX0FzIAVu53VYXHNoELqAB0X7xz4v2UwkaKJtOGSc3ha7vzMCMCaKY4l/zHZCEtdoP5Api0uDxu0pFY4xhvk9ZgbqIZGk0/V1eofZyP0vKSQQDZ9N8FzjUcQW1kMfHEAgLX3G2yNgK2O6bCeqzoud6V9mlrQU+jiK5XaUD5tbtA="
+
+script:
+  - set -e
+  - pip install doctr
+  - hugo
+  - doctr deploy --built-docs public/ . --branch-whitelist source
+
+notifications:
+  email: false
