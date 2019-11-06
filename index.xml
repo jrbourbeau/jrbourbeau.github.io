@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>James Bourbeau</title>
+    <link>https://jrbourbeau.github.io/</link>
+    <description>Recent content on James Bourbeau</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 01 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://jrbourbeau.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mocking in Software Tests</title>
+      <link>https://jrbourbeau.github.io/posts/test-mocking/</link>
+      <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jrbourbeau.github.io/posts/test-mocking/</guid>
+      <description>This week I learned about mocking code behavior when writing tests. This is really cool, so I thought I would write a little about it.
+Recently, I wrote a Python wrapper for the Open Brewery DB API. At first, the tests I wrote for my Python wrapper included code that actually requested data from the Open Brewery DB external server. This wasn&amp;rsquo;t ideal because the tests took a long time to run (a few seconds for each test, but this can add up during development when you&amp;rsquo;re running tests frequently).</description>
+    </item>
+    
+    <item>
+      <title>PyUnfold: A Python package for iterative unfolding</title>
+      <link>https://jrbourbeau.github.io/posts/pyunfold-overview/</link>
+      <pubDate>Sun, 15 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jrbourbeau.github.io/posts/pyunfold-overview/</guid>
+      <description>Recently Zigfried Hampel-Arias and I have been working on an open-source Python package for implementing iterative unfolding. The package, PyUnfold, was recently published in the Journal of Open Source Software (JOSS) and is meant to bring iterative unfolding to the Python ecosystem while providing users a straightforward yet extensible API. Some relevant links:
+ GitHub repo: https://github.com/jrbourbeau/pyunfold Documentation: https://jrbourbeau.github.io/pyunfold JOSS publication: http://joss.theoj.org/papers/10.21105/joss.00741  What is unfolding? In an ideal world, experimentalists would have access to the perfect detector: an apparatus that makes no error in measuring a desired quantity.</description>
+    </item>
+    
+    <item>
+      <title>Supervised machine learning in Python with scikit-learn @ MadPy</title>
+      <link>https://jrbourbeau.github.io/posts/supervised-machine-learning-madpy/</link>
+      <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jrbourbeau.github.io/posts/supervised-machine-learning-madpy/</guid>
+      <description>I recently gave a talk to the Madison Python meetup (MadPy) group on supervised machine learning in Python using the popular scikit-learn library. My aim for this talk was to provide an introduction to several supervised machine learning concepts, each paired with a code example that uses scikit-learn to implementing these concepts.
+Topics covered in the talk include:
+ Classical programming vs. machine learning Supervised machine learning Data representation in scikit-learn scikit-learn estimator API Example algorithm: decision tree classifier Model validation  The slides for this talk can be found at https://jrbourbeau.</description>
+    </item>
+    
+    <item>
+      <title>Creating DAGs with PyCondor</title>
+      <link>https://jrbourbeau.github.io/posts/dags-with-pycondor/</link>
+      <pubDate>Wed, 10 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://jrbourbeau.github.io/posts/dags-with-pycondor/</guid>
+      <description>Often the need arises to perform a series of tasks that are related to one another. For example, you might have a workflow that&amp;rsquo;s something like &amp;ldquo;do task A, then do task B, and then do task C&amp;rdquo;. These dependencies, task A must be done before task B and task B must be done before task C, can be encapsulated in a directed acyclic graph (DAG). There are many libraries and frameworks for constructing and executing DAGs.</description>
+    </item>
+    
+    <item>
+      <title>Reproducible Research with Python</title>
+      <link>https://jrbourbeau.github.io/posts/reproducible-research/</link>
+      <pubDate>Tue, 05 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://jrbourbeau.github.io/posts/reproducible-research/</guid>
+      <description>I recently gave a talk on reproducible research using Python to a group of fellow graduate students at the Wisconsin IceCube Particle Astrophysics Center. My aim with this talk was to provide an introduction to some software development best practices for scientist.
+Topics covered in the talk include:
+ What a Python package is.
+ How to make Python packages installable with pip.
+ Creating virtual Python environments.
+ Writing tests with pytest.</description>
+    </item>
+    
+    <item>
+      <title>HTCondor made easy with PyCondor</title>
+      <link>https://jrbourbeau.github.io/posts/pycondor/</link>
+      <pubDate>Mon, 06 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://jrbourbeau.github.io/posts/pycondor/</guid>
+      <description>HTCondor is a an open-source framework for high throughput computing developed at the University of Wisconsin&amp;mdash;Madison. It&amp;rsquo;s an incredibly useful and versatile tool that I rely on heavily in my everyday work. However, I&amp;rsquo;ve found when the number of jobs becomes large (especially when there are interrelated jobs), actually making the job submission files can become a pain.
+This prompted me to make PyCondor (Python HTCondor), a tool that helps build and submit HTCondor jobs in a straight-forward manner with minimal hassle.</description>
+    </item>
+    
+    <item>
+      <title>Survey of some built-in types in Python</title>
+      <link>https://jrbourbeau.github.io/posts/introduction-to-built-in-types-python/</link>
+      <pubDate>Wed, 05 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://jrbourbeau.github.io/posts/introduction-to-built-in-types-python/</guid>
+      <description>I put together a Jupyter notebook that covers several of the commonly used built-in type in Python. The notebook can be found on GitHub or nbviewer.</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>https://jrbourbeau.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jrbourbeau.github.io/about/</guid>
+      <description>I&amp;rsquo;m a Software Engineer at Quansight where I contribute to and help maintain projects in the scientific Python ecosystem. I also work on consulting projects to help clients leverage open-source tools for data science applications. Details on my open-source contributions are available on GitHub.
+Additionally, I co-organizer the monthly MadPy Python meetup.
+I hold a Ph.D. and M.S. from the University of Wisconsin-Madison where I studied experimental astrophysics as a member of the IceCube collaboration.</description>
+    </item>
+    
+    <item>
+      <title>Resume</title>
+      <link>https://jrbourbeau.github.io/resume/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jrbourbeau.github.io/resume/</guid>
+      <description>Professional Summary Software Engineer experienced in working with real-world data, building machine learning models, parallel computing, and effectively communicating complex topics to both technical and non-technical stakeholders.
+Education Ph.D. in Physics
+University of Wisconsin-Madison
+M.S. in Physics
+University of Wisconsin-Madison
+B.S. in Physics
+University of Texas at Arlington
+Professional Experience Quansight Software Engineer / June 2019 &amp;mdash; Present / Madison, WI
+ Contributed to and helped maintain projects in the open-source scientific Python ecosystem Worked on consulting projects to help clients leverage open-source tools for data science applications  Support Engineer / Oct 2018 &amp;mdash; May 2019 / Madison, WI</description>
+    </item>
+    
+    <item>
+      <title>Software</title>
+      <link>https://jrbourbeau.github.io/software/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jrbourbeau.github.io/software/</guid>
+      <description>I&amp;rsquo;m an active developer, maintainer, or contributor to several projects in the Python data science community. Projects I maintain or have made significant contributions to include:
+Dask Dask is a library for flexible parallel computing in Python. It provides parallelized NumPy array and Pandas DataFrame objects as well as a task scheduling interface for scientific computing in larger-than-memory or distributed environments.
+PyCondor PyCondor is a Python package for constructing and submitting jobs to an HTCondor distributed cluster.</description>
+    </item>
+    
+    <item>
+      <title>Talks</title>
+      <link>https://jrbourbeau.github.io/talks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jrbourbeau.github.io/talks/</guid>
+      <description>September 12, 2019: Madison Python Meetup (Madison, WI) Accelerating Numerical Python with Numba [ GitHub repo ] 
+July 31, 2019: Data-Driven Wisconsin (Milwaukee, WI) Parallel Computing in Python with Dask [ GitHub repo ] 
+Febuary 7, 2019: Madison Python Meetup (Madison, WI) Parallel Computing in Python with Dask [ GitHub repo ]
+October 30, 2018: WIPAC X-meeting (Madison, WI) Parallel Computing with Dask [ GitHub repo ]</description>
+    </item>
+    
+  </channel>
+</rss>

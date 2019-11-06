@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="James Bourbeau">
+    <meta name="description" content="James Bourbeau&#39;s personal website">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Creating DAGs with PyCondor"/>
+<meta name="twitter:description" content="Often the need arises to perform a series of tasks that are related to one another. For example, you might have a workflow that&rsquo;s something like &ldquo;do task A, then do task B, and then do task C&rdquo;. These dependencies, task A must be done before task B and task B must be done before task C, can be encapsulated in a directed acyclic graph (DAG). There are many libraries and frameworks for constructing and executing DAGs."/>
+
+    <meta property="og:title" content="Creating DAGs with PyCondor" />
+<meta property="og:description" content="Often the need arises to perform a series of tasks that are related to one another. For example, you might have a workflow that&rsquo;s something like &ldquo;do task A, then do task B, and then do task C&rdquo;. These dependencies, task A must be done before task B and task B must be done before task C, can be encapsulated in a directed acyclic graph (DAG). There are many libraries and frameworks for constructing and executing DAGs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jrbourbeau.github.io/posts/dags-with-pycondor/" />
+<meta property="article:published_time" content="2018-01-10T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-01-10T00:00:00&#43;00:00"/>
+
+
+    
+      <base href="https://jrbourbeau.github.io/posts/dags-with-pycondor/">
+    
+    <title>
+  Creating DAGs with PyCondor · James Bourbeau
+</title>
+
+    
+      <link rel="canonical" href="https://jrbourbeau.github.io/posts/dags-with-pycondor/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://jrbourbeau.github.io/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+      <link rel="stylesheet" href="https://jrbourbeau.github.io/css/custom.css" />
+    
+
+    
+    
+    <link rel="icon" type="image/png" href="https://jrbourbeau.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://jrbourbeau.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.55.6" />
+  </head>
+
+  <body class=" ">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://jrbourbeau.github.io/">
+      James Bourbeau
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://jrbourbeau.github.io/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://jrbourbeau.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://jrbourbeau.github.io/resume/">Resume</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Creating DAGs with PyCondor</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2018-01-10T00:00:00Z'>
+                January 10, 2018
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              4 minutes read
+            </span>
+          </div>
+          
+          
+        </div>
+      </header>
+
+      <div>
+        
+
+<p>Often the need arises to perform a series of tasks that are related to one another. For example, you might have a workflow that&rsquo;s something like &ldquo;do task A, then do task B, and then do task C&rdquo;. These dependencies, task A must be done before task B and task B must be done before task C, can be encapsulated in a directed acyclic graph (DAG). There are many libraries and frameworks for constructing and executing DAGs. One in particular, <a href="https://research.cs.wisc.edu/htcondor/">HTCondor</a>, I utilize in my work.</p>
+
+<p>This tutorial walks through constructing an example DAG (shown below) using <a href="https://github.com/jrbourbeau/pycondor/">PyCondor</a>, a Python package for building workflows that can be submitted to an HTCondor cluster. This example DAG can be found in the <a href="https://github.com/jrbourbeau/pycondor/blob/master/examples/tutorial.py">PyCondor example scripts on GitHub</a>.
+<!-- {: .notice--success} --></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">pycondor</span> <span style="color:#080;font-weight:bold">import</span> Job, Dagman
+
+<span style="color:#888"># Define the error, output, log, and submit directories</span>
+error <span style="color:#333">=</span> <span style="background-color:#fff0f0">&#39;condor/error&#39;</span>
+output <span style="color:#333">=</span> <span style="background-color:#fff0f0">&#39;condor/output&#39;</span>
+log <span style="color:#333">=</span> <span style="background-color:#fff0f0">&#39;condor/log&#39;</span>
+submit <span style="color:#333">=</span> <span style="background-color:#fff0f0">&#39;condor/submit&#39;</span>
+
+<span style="color:#888"># Instantiate a Dagman</span>
+dagman <span style="color:#333">=</span> Dagman(name<span style="color:#333">=</span><span style="background-color:#fff0f0">&#39;tutorial_dagman&#39;</span>,
+                submit<span style="color:#333">=</span>submit)
+
+<span style="color:#888"># Instantiate Jobs</span>
+job_date <span style="color:#333">=</span> Job(name<span style="color:#333">=</span><span style="background-color:#fff0f0">&#39;date_job&#39;</span>,
+               executable<span style="color:#333">=</span><span style="background-color:#fff0f0">&#39;/bin/date&#39;</span>,
+               submit<span style="color:#333">=</span>submit,
+               error<span style="color:#333">=</span>error,
+               output<span style="color:#333">=</span>output,
+               log<span style="color:#333">=</span>log,
+               dag<span style="color:#333">=</span>dagman)
+
+job_sleep <span style="color:#333">=</span> Job(name<span style="color:#333">=</span><span style="background-color:#fff0f0">&#39;sleep_job&#39;</span>,
+                executable<span style="color:#333">=</span><span style="background-color:#fff0f0">&#39;/bin/sleep&#39;</span>,
+                submit<span style="color:#333">=</span>submit,
+                error<span style="color:#333">=</span>error,
+                output<span style="color:#333">=</span>output,
+                log<span style="color:#333">=</span>log,
+                dag<span style="color:#333">=</span>dagman)
+job_sleep<span style="color:#333">.</span>add_arg(<span style="background-color:#fff0f0">&#39;1&#39;</span>)
+job_sleep<span style="color:#333">.</span>add_arg(<span style="background-color:#fff0f0">&#39;2&#39;</span>)
+job_sleep<span style="color:#333">.</span>add_arg(<span style="background-color:#fff0f0">&#39;3&#39;</span>)
+
+<span style="color:#888"># Add inter-job relationship</span>
+<span style="color:#888"># Ensure that job_sleep finishes before job_date starts</span>
+job_sleep<span style="color:#333">.</span>add_child(job_date)
+
+<span style="color:#888"># Write all necessary submit files and submit job to HTCondor</span>
+dagman<span style="color:#333">.</span>build_submit()</code></pre></div>
+<h3 id="job-and-dagman-objects">Job and Dagman objects</h3>
+
+<p>The basic building blocks in PyCondor are the Job and Dagman objects. A Job object represents an executable (e.g. a shell command, Python script, etc.) that you would like to run on an HTCondor cluster. While the Dagman object represents a collection of Jobs to be run.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">pycondor</span> <span style="color:#080;font-weight:bold">import</span> Job, Dagman</code></pre></div>
+<p>Both the Job and Dagman objects can be imported directly from <code>pycondor</code>.</p>
+
+<h3 id="job-and-dagman-file-directories">Job and Dagman file directories</h3>
+
+<p>There are several files that will be generated for both Job and Dagman objects. For each Job and Dagman object, PyCondor will create a submit file. This file will be formatted such that it can be submitted to HTCondor for execution. In addition to submit files, log files and files containing the standard output and error for each Job will also be generated.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888"># Define the error, output, log, and submit directories</span>
+error <span style="color:#333">=</span> <span style="background-color:#fff0f0">&#39;condor/error&#39;</span>
+output <span style="color:#333">=</span> <span style="background-color:#fff0f0">&#39;condor/output&#39;</span>
+log <span style="color:#333">=</span> <span style="background-color:#fff0f0">&#39;condor/log&#39;</span>
+submit <span style="color:#333">=</span> <span style="background-color:#fff0f0">&#39;condor/submit&#39;</span></code></pre></div>
+<p>For this tutorial, we will explicitly specify the directories that we would like the error, output, log, and submit files to be saved to. If not specified, the current working directory will be used.</p>
+
+<p>Note that these file directories can also be specified by setting the <code>PYCONDOR_SUBMIT_DIR</code>, <code>PYCONDOR_ERROR_DIR</code>, <code>PYCONDOR_LOG_DIR</code>, and <code>PYCONDOR_OUTPUT_DIR</code> environment variables. For example, setting <code>PYCONDOR_SUBMIT_DIR=condor/submit</code> is equivalent to the above.</p>
+
+<h3 id="setting-up-a-dagman">Setting up a Dagman</h3>
+
+<p>The Dagman object (short for directed acyclic graph manager) represents a collection of Jobs to be run.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888"># Instantiate a Dagman</span>
+dagman <span style="color:#333">=</span> Dagman(name<span style="color:#333">=</span><span style="background-color:#fff0f0">&#39;tutorial_dagman&#39;</span>,
+                submit<span style="color:#333">=</span>submit)</code></pre></div>
+<p>For a Dagman, only a <code>name</code> has to be provided (used to construct the submit, log, etc. file names). While the <code>submit</code> parameter is the directory path where the Dagman submit file will be saved (if not provided, it defaults to the current directory).</p>
+
+<h3 id="setting-up-jobs">Setting up Jobs</h3>
+
+<p>Now we&rsquo;re ready to add some Jobs to the Dagman. Both a <code>name</code> and an <code>executable</code> must be provided to create a Job.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888"># Instantiate Jobs</span>
+job_date <span style="color:#333">=</span> Job(name<span style="color:#333">=</span><span style="background-color:#fff0f0">&#39;date_job&#39;</span>,
+               executable<span style="color:#333">=</span><span style="background-color:#fff0f0">&#39;/bin/date&#39;</span>,
+               submit<span style="color:#333">=</span>submit,
+               error<span style="color:#333">=</span>error,
+               output<span style="color:#333">=</span>output,
+               log<span style="color:#333">=</span>log,
+               dag<span style="color:#333">=</span>dagman)
+
+job_sleep <span style="color:#333">=</span> Job(name<span style="color:#333">=</span><span style="background-color:#fff0f0">&#39;sleep_job&#39;</span>,
+                executable<span style="color:#333">=</span><span style="background-color:#fff0f0">&#39;/bin/sleep&#39;</span>,
+                submit<span style="color:#333">=</span>submit,
+                error<span style="color:#333">=</span>error,
+                output<span style="color:#333">=</span>output,
+                log<span style="color:#333">=</span>log,
+                dag<span style="color:#333">=</span>dagman)
+job_sleep<span style="color:#333">.</span>add_arg(<span style="background-color:#fff0f0">&#39;1&#39;</span>)
+job_sleep<span style="color:#333">.</span>add_arg(<span style="background-color:#fff0f0">&#39;2&#39;</span>)
+job_sleep<span style="color:#333">.</span>add_arg(<span style="background-color:#fff0f0">&#39;3&#39;</span>)</code></pre></div>
+<p>In this example, <code>job_date</code> will run the shell <code>date</code> command, and <code>job_sleep</code> will run the shell <code>sleep</code> command. A Job can be added to a Dagman object by passing a Dagman to the Job <code>dag</code> parameter.</p>
+
+<p>In addition to defining an executable for a Job to run, you can also pass arguments to the executable using the Job <code>add_arg</code> method. Here, we&rsquo;ve added three arguments, <code>1</code>, <code>2</code>, and <code>3</code>, to <code>job_sleep</code>. This Job will now run the <code>sleep</code> command on each of the provided arguments, i.e. <code>sleep 1</code>, <code>sleep 2</code>, and <code>sleep 3</code>.</p>
+
+<h3 id="adding-inter-job-relationships">Adding inter-job relationships</h3>
+
+<p>One useful feature of Dagman objects is that they can support inter-job relationships between the Jobs they manage. Inter-job relationships in PyCondor can be specified using the Job <code>add_child</code> and <code>add_parent</code> methods.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888"># Add inter-job relationship</span>
+<span style="color:#888"># Ensure that job_sleep finishes before job_date starts</span>
+job_sleep<span style="color:#333">.</span>add_child(job_date)</code></pre></div>
+<p>In this example, <code>job_sleep.add_child(job_date)</code> sets <code>job_date</code> as a child Job of <code>job_sleep</code>. This means that <code>job_date</code> will start running only after <code>job_sleep</code> has finished. Note that <code>job_sleep.add_child(job_date)</code> is equivalent to <code>job_date.add_parent(job_sleep)</code>.</p>
+
+<h3 id="build-and-submit-dagman">Build and submit Dagman</h3>
+
+<p>Now that the relationships between the Jobs in our Dagman have been specified, we&rsquo;re ready to build all the appropriate Job and Dagman submit files and submit them to HTCondor for execution.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888"># Write all necessary submit files and submit job to HTCondor</span>
+dagman<span style="color:#333">.</span>build_submit()</code></pre></div>
+<p>The Dagman <code>build_submit</code> method is used to both build the Job and Dagman submit files as well as submit them to HTCondor. Note that the <code>build_submit</code> method is just a convenience method for the <code>build</code> Dagman method followed by the <code>submit_dag</code> method.</p>
+
+<p>There you go, we&rsquo;ve built a DAG using PyCondor! For more examples see the <a href="https://jrbourbeau.github.io/pycondor/examples.html">examples</a> section of the PyCondor documentation.</p>
+
+      </div>
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+     © 2019
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>

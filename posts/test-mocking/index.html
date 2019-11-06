@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="James Bourbeau">
+    <meta name="description" content="James Bourbeau&#39;s personal website">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mocking in Software Tests"/>
+<meta name="twitter:description" content="This week I learned about mocking code behavior when writing tests. This is really cool, so I thought I would write a little about it.
+Recently, I wrote a Python wrapper for the Open Brewery DB API. At first, the tests I wrote for my Python wrapper included code that actually requested data from the Open Brewery DB external server. This wasn&rsquo;t ideal because the tests took a long time to run (a few seconds for each test, but this can add up during development when you&rsquo;re running tests frequently)."/>
+
+    <meta property="og:title" content="Mocking in Software Tests" />
+<meta property="og:description" content="This week I learned about mocking code behavior when writing tests. This is really cool, so I thought I would write a little about it.
+Recently, I wrote a Python wrapper for the Open Brewery DB API. At first, the tests I wrote for my Python wrapper included code that actually requested data from the Open Brewery DB external server. This wasn&rsquo;t ideal because the tests took a long time to run (a few seconds for each test, but this can add up during development when you&rsquo;re running tests frequently)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jrbourbeau.github.io/posts/test-mocking/" />
+<meta property="article:published_time" content="2018-12-01T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-12-01T00:00:00&#43;00:00"/>
+
+
+    
+      <base href="https://jrbourbeau.github.io/posts/test-mocking/">
+    
+    <title>
+  Mocking in Software Tests · James Bourbeau
+</title>
+
+    
+      <link rel="canonical" href="https://jrbourbeau.github.io/posts/test-mocking/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://jrbourbeau.github.io/css/coder.min.28d751104f30c16da1aa1bb04015cbe662cacfe0d1b01af4f2240ad58580069c.css" integrity="sha256-KNdREE8wwW2hqhuwQBXL5mLKz&#43;DRsBr08iQK1YWABpw=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+      <link rel="stylesheet" href="https://jrbourbeau.github.io/css/custom.css" />
+    
+
+    
+    
+    <link rel="icon" type="image/png" href="https://jrbourbeau.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://jrbourbeau.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.55.6" />
+  </head>
+
+  <body class=" ">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://jrbourbeau.github.io/">
+      James Bourbeau
+    </a>
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://jrbourbeau.github.io/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://jrbourbeau.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://jrbourbeau.github.io/resume/">Resume</a>
+          </li>
+        
+      
+      
+    </ul>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Mocking in Software Tests</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2018-12-01T00:00:00Z'>
+                December 1, 2018
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              4 minutes read
+            </span>
+          </div>
+          
+          
+        </div>
+      </header>
+
+      <div>
+        
+
+<p>This week I learned about mocking code behavior when writing tests. This is really cool, so I thought I would write a little about it.</p>
+
+<p>Recently, I wrote a <a href="https://jrbourbeau.github.io/openbrewerydb-python/">Python wrapper</a> for the <a href="https://www.openbrewerydb.org/">Open Brewery DB</a> API. At first, the tests I wrote for my Python wrapper included code that actually requested data from the Open Brewery DB external server. This wasn&rsquo;t ideal because the tests took a long time to run (a few seconds for each test, but this can add up during development when you&rsquo;re running tests frequently). In addition, if the API server went down for any period of time, then the tests for the Python wrapper would start to fail, even if there were no changes made to the code.</p>
+
+<p>This post walks through writing a test for a function that makes an HTTP request, while avoiding actually making the request.</p>
+
+<h2 id="example-http-request">Example HTTP request</h2>
+
+<p>Below is a <code>get_org_repo_data</code> function that uses the <a href="http://docs.python-requests.org/en/master/">Requests</a> library to make an HTTP request to the <a href="https://developer.github.com/v3/repos/#list-organization-repositories">GitHub API</a> to get information about a GitHub organization&rsquo;s repositories.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888"># example.py</span>
+<span style="color:#080;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">requests</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">get_org_repo_data</span>(org):
+    url <span style="color:#333">=</span> f<span style="background-color:#fff0f0">&#39;https://api.github.com/orgs/{org}/repos&#39;</span>
+    r <span style="color:#333">=</span> requests<span style="color:#333">.</span>get(url)
+    <span style="color:#080;font-weight:bold">if</span> r<span style="color:#333">.</span>status_code <span style="color:#333">==</span> <span style="color:#00d;font-weight:bold">200</span>:
+        <span style="color:#080;font-weight:bold">return</span> r<span style="color:#333">.</span>json()
+    <span style="color:#080;font-weight:bold">else</span>:
+        <span style="color:#080;font-weight:bold">return</span> None</code></pre></div>
+<p>The function returns either JSON data about the organization&rsquo;s repositories, or <code>None</code> if the request response <code>status_code</code> indicates there was an issue with the request.</p>
+
+<p>When writing tests for <code>get_org_repo_data</code>, we&rsquo;ll want to make sure that <code>None</code> is returned when the <code>status_code</code> for the request response is not <code>200</code>. This could be done, for instance, by passing <code>get_org_repo_data</code> the name of a non-existent GitHub organization.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888"># test_example.py</span>
+<span style="color:#080;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">example</span> <span style="color:#080;font-weight:bold">import</span> get_org_repo_data
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">test_get_org_repo_data_invalid</span>():
+    result <span style="color:#333">=</span> get_org_repo_data(org<span style="color:#333">=</span><span style="background-color:#fff0f0">&#39;this-is-an-invalid-org&#39;</span>)
+    <span style="color:#080;font-weight:bold">assert</span> result <span style="color:#000;font-weight:bold">is</span> None</code></pre></div>
+<p>Because the organization <code>'this-is-an-invalid-org'</code> doesn&rsquo;t exist on GitHub, the request response <code>status_code</code> will be <code>404</code> and <code>get_org_repo_data</code> will return <code>None</code>. This test will pass. However, every time the test is run, it will make an HTTP request to the GitHub API, which introduces some of the problems mentioned at the beginning of this post.</p>
+
+<p>Is there a better way?</p>
+
+<h2 id="mocking-requests-get">Mocking <code>requests.get</code></h2>
+
+<p>Mocking is a way to replace the normal functionality of some piece of code. The <code>unittest.mock</code> library in the Python standard library has a <a href="https://docs.python.org/3/library/unittest.mock.html#the-mock-class"><code>Mock</code> class</a> and <a href="https://docs.python.org/3/library/unittest.mock.html#unittest.mock.patch"><code>patch</code> function decorator</a> that will help us do this (note that <code>unittest.mock</code> was added in Python version 3.3).</p>
+
+<p>Instances of the <code>Mock</code> class are callable and allow you to assign return values and class attributes as you wish.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">unittest.mock</span> <span style="color:#080;font-weight:bold">import</span> Mock
+
+a <span style="color:#333">=</span> Mock(status_code<span style="color:#333">=</span><span style="color:#00d;font-weight:bold">200</span>)
+<span style="color:#080;font-weight:bold">assert</span> a<span style="color:#333">.</span>status_code <span style="color:#333">==</span> <span style="color:#00d;font-weight:bold">200</span>
+a<span style="color:#333">.</span>return_value <span style="color:#333">=</span> <span style="background-color:#fff0f0">&#39;foo&#39;</span>
+<span style="color:#080;font-weight:bold">assert</span> a() <span style="color:#333">==</span> <span style="background-color:#fff0f0">&#39;foo&#39;</span></code></pre></div>
+<p><code>Mock</code> objects are super flexible, you can give them any attributes you want. The <code>patch</code> function decorator can be used to replace a specified function with a mock object. So setting the <code>return_value</code> for the mock object allows you to modify the patched function to behave however you want it to.</p>
+
+<p>In the <code>test_get_org_repo_data_invalid</code> test, we can use <code>Mock</code> and <code>patch</code> together to have the <code>requests.get</code> function return a mock object with a <code>status_code</code> attribute that indicates an error. The updated test that mocks <code>requests.get</code> looks like:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#888"># test_example.py</span>
+<span style="color:#080;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">example</span> <span style="color:#080;font-weight:bold">import</span> get_org_repo_data
+<span style="color:#080;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">unittest.mock</span> <span style="color:#080;font-weight:bold">import</span> Mock, patch
+
+<span style="color:#555;font-weight:bold">@patch</span>(<span style="background-color:#fff0f0">&#39;example.requests.get&#39;</span>)
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06b;font-weight:bold">test_get_org_repo_data_invalid</span>(mock_get):
+    mock_get<span style="color:#333">.</span>return_value <span style="color:#333">=</span> Mock(status_code<span style="color:#333">=</span><span style="color:#00d;font-weight:bold">404</span>)
+    result <span style="color:#333">=</span> get_org_repo_data(org<span style="color:#333">=</span><span style="background-color:#fff0f0">&#39;this-is-an-invalid-org&#39;</span>)
+    <span style="color:#080;font-weight:bold">assert</span> result <span style="color:#000;font-weight:bold">is</span> None</code></pre></div>
+<p>Here we used the <code>patch</code> decorator to replace the <code>requests.get</code> function in <code>example.py</code> with a mock object that we&rsquo;ve called <code>mock_get</code> (note that the mock object gets passed as an extra argument to the decorated test function). We then assign the return value of <code>mock_get</code> to be another mock object with a <code>status_code</code> attribute of <code>404</code>. Now when <code>test_get_org_repo_data_invalid</code> is run we are still testing that <code>None</code> is returned, but we did so without actually making an HTTP request!</p>
+
+<p>Here we used the <code>unittest.mock</code> library to mock an HTTP request. However, <code>Mock</code> and <code>patch</code> can be used to mock any component of a codebase! This is a useful technique to have in your testing toolbox.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+<li><a href="https://docs.python.org/3/library/unittest.mock.html"><code>unittest.mock</code> library docs</a></li>
+<li><a href="https://realpython.com/testing-third-party-apis-with-mocks/">Mocking External APIs in Python</a> &mdash; Great article on Real Python that goes in depth about mocking in Python tests</li>
+<li><a href="https://github.com/astropy/pytest-remotedata">pytest-remotedata</a> &mdash; pytest plugin for dealing with tests that require data from the internet</li>
+</ul>
+
+      </div>
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+     © 2019
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+
+  </body>
+
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/</loc>
+    <lastmod>2018-12-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/posts/test-mocking/</loc>
+    <lastmod>2018-12-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/posts/</loc>
+    <lastmod>2018-12-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/posts/pyunfold-overview/</loc>
+    <lastmod>2018-07-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/posts/supervised-machine-learning-madpy/</loc>
+    <lastmod>2018-03-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/posts/dags-with-pycondor/</loc>
+    <lastmod>2018-01-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/posts/reproducible-research/</loc>
+    <lastmod>2017-12-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/posts/pycondor/</loc>
+    <lastmod>2017-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/posts/introduction-to-built-in-types-python/</loc>
+    <lastmod>2016-10-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/resume/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/series/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/software/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jrbourbeau.github.io/talks/</loc>
+  </url>
+  
+</urlset>
