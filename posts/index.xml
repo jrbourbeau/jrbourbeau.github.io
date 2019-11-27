@@ -6,10 +6,20 @@
     <description>Recent content in Posts on James Bourbeau</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 27 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 26 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jrbourbeau.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Trigger &amp; Skipping CI services</title>
+      <link>https://jrbourbeau.github.io/posts/triggering-skipping-ci-services/</link>
+      <pubDate>Tue, 26 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jrbourbeau.github.io/posts/triggering-skipping-ci-services/</guid>
+      <description>A couple of notes about interacting with continuous integration (CI) services that I find useful when working on open source projects.
+Using an empty commit to trigger CI Sometimes it&amp;rsquo;s useful to open a pull request to simply trigger any CI services for a project. Until recently I had done this by making some small change (e.g. adding a blank line to a README). Then I found out git commit has an --allow-empty option which lets you make an empty commit:</description>
+    </item>
     
     <item>
       <title>Quansight Labs Dask Update - August 2019</title>

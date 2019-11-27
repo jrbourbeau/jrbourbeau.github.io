@@ -22,6 +22,7 @@
 ./posts/reproducible-research/index.html
 ./posts/supervised-machine-learning-madpy/index.html
 ./posts/test-mocking/index.html
+./posts/triggering-skipping-ci-services/index.html
 ./resume/index.html
 ./series/index.html
 ./series/index.xml
