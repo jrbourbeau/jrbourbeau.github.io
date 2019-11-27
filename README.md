@@ -18,7 +18,7 @@ brew install hugo
 Build and serve the site locally with:
 
 ```
-hugo serve
+hugo serve -D
 ```
 
 The site should now be available at http://localhost:1313/

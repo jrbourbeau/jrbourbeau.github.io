@@ -13,7 +13,10 @@ pygmentsstyle = "colorful"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
-# disqusShortname = "yourdiscussshortname"
+googleAnalytics = "UA-130389564-1"
+
+[permalinks]
+  posts = "/:section/:year/:title/"
 
 [params]
     author = "James Bourbeau"
@@ -25,17 +28,17 @@ pygmentscodefencesguesssyntax = true
     favicon_16 = "images/favicon-16x16.png"
     favicon_32 = "images/favicon-32x32.png"
 
-    # footercontent = "This is the footer"
+    footercontent = " "
 
     dateformat = "January 2, 2006"
 
-    hideCredits = false
-    hideCopyright = false
+    hideCredits = true
+    hideCopyright = true
 
     rtl = false
 
     # Use inverted colors
-    inverted = false
+    colorscheme = "light"
 
     # Series see also post count
     maxSeeAlsoItems = 5
@@ -85,6 +88,6 @@ pygmentscodefencesguesssyntax = true
             url = "posts/"
 
             [[languages.en.menu.main]]
-            name = "Resume"
-            weight = 3
+            name = "Résumé"
+            weight = 5
             url = "resume/"
