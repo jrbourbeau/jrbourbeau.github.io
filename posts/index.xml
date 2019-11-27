@@ -13,20 +13,20 @@
     
     <item>
       <title>Trigger &amp; Skipping CI services</title>
-      <link>https://jrbourbeau.github.io/posts/triggering-skipping-ci-services/</link>
+      <link>https://jrbourbeau.github.io/posts/2019/trigger-skipping-ci-services/</link>
       <pubDate>Tue, 26 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://jrbourbeau.github.io/posts/triggering-skipping-ci-services/</guid>
+      <guid>https://jrbourbeau.github.io/posts/2019/trigger-skipping-ci-services/</guid>
       <description>A couple of notes about interacting with continuous integration (CI) services that I find useful when working on open source projects.
 Using an empty commit to trigger CI Sometimes it&amp;rsquo;s useful to open a pull request to simply trigger any CI services for a project. Until recently I had done this by making some small change (e.g. adding a blank line to a README). Then I found out git commit has an --allow-empty option which lets you make an empty commit:</description>
     </item>
     
     <item>
       <title>Quansight Labs Dask Update - August 2019</title>
-      <link>https://jrbourbeau.github.io/posts/labs-dask-update-08-2019/</link>
+      <link>https://jrbourbeau.github.io/posts/2019/quansight-labs-dask-update-august-2019/</link>
       <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://jrbourbeau.github.io/posts/labs-dask-update-08-2019/</guid>
+      <guid>https://jrbourbeau.github.io/posts/2019/quansight-labs-dask-update-august-2019/</guid>
       <description>This post originally appeared in the Quansight Labs blog
 This post provides an update on some recent Dask-related activities the Quansight Labs team has been working on.
 Dask community work order Through a community work order (CWO) with the D. E. Shaw group, the Quansight Labs team has been able to dedicate developer time towards bug fixes and feature requests for Dask. This work has touched on several portions of the Dask codebase, but generally have centered around using Dask Arrays with the distributed scheduler.</description>
@@ -34,30 +34,30 @@ Dask community work order Through a community work order (CWO) with the D. E. Sh
     
     <item>
       <title>Mocking in Software Tests</title>
-      <link>https://jrbourbeau.github.io/posts/test-mocking/</link>
+      <link>https://jrbourbeau.github.io/posts/2018/mocking-in-software-tests/</link>
       <pubDate>Sat, 01 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://jrbourbeau.github.io/posts/test-mocking/</guid>
+      <guid>https://jrbourbeau.github.io/posts/2018/mocking-in-software-tests/</guid>
       <description>This week I learned about mocking code behavior when writing tests. This is really cool, so I thought I would write a little about it.
 Recently, I wrote a Python wrapper for the Open Brewery DB API. At first, the tests I wrote for my Python wrapper included code that actually requested data from the Open Brewery DB external server. This wasn&amp;rsquo;t ideal because the tests took a long time to run (a few seconds for each test, but this can add up during development when you&amp;rsquo;re running tests frequently).</description>
     </item>
     
     <item>
       <title>PyUnfold: A Python package for iterative unfolding</title>
-      <link>https://jrbourbeau.github.io/posts/pyunfold-overview/</link>
+      <link>https://jrbourbeau.github.io/posts/2018/pyunfold-a-python-package-for-iterative-unfolding/</link>
       <pubDate>Sun, 15 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://jrbourbeau.github.io/posts/pyunfold-overview/</guid>
+      <guid>https://jrbourbeau.github.io/posts/2018/pyunfold-a-python-package-for-iterative-unfolding/</guid>
       <description>Recently Zigfried Hampel-Arias and I have been working on an open-source Python package for implementing iterative unfolding. The package, PyUnfold, was recently published in the Journal of Open Source Software (JOSS) and is meant to bring iterative unfolding to the Python ecosystem while providing users a straightforward yet extensible API. Some relevant links:
  GitHub repo: https://github.com/jrbourbeau/pyunfold Documentation: https://jrbourbeau.github.io/pyunfold JOSS publication: http://joss.theoj.org/papers/10.21105/joss.00741  What is unfolding? In an ideal world, experimentalists would have access to the perfect detector: an apparatus that makes no error in measuring a desired quantity.</description>
     </item>
     
     <item>
       <title>Supervised machine learning in Python with scikit-learn @ MadPy</title>
-      <link>https://jrbourbeau.github.io/posts/supervised-machine-learning-madpy/</link>
+      <link>https://jrbourbeau.github.io/posts/2018/supervised-machine-learning-in-python-with-scikit-learn-madpy/</link>
       <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://jrbourbeau.github.io/posts/supervised-machine-learning-madpy/</guid>
+      <guid>https://jrbourbeau.github.io/posts/2018/supervised-machine-learning-in-python-with-scikit-learn-madpy/</guid>
       <description>I recently gave a talk to the Madison Python meetup (MadPy) group on supervised machine learning in Python using the popular scikit-learn library. My aim for this talk was to provide an introduction to several supervised machine learning concepts, each paired with a code example that uses scikit-learn to implementing these concepts.
 Topics covered in the talk include:
  Classical programming vs. machine learning Supervised machine learning Data representation in scikit-learn scikit-learn estimator API Example algorithm: decision tree classifier Model validation  The slides for this talk can be found at https://jrbourbeau.</description>
@@ -65,19 +65,19 @@ Topics covered in the talk include:
     
     <item>
       <title>Creating DAGs with PyCondor</title>
-      <link>https://jrbourbeau.github.io/posts/dags-with-pycondor/</link>
+      <link>https://jrbourbeau.github.io/posts/2018/creating-dags-with-pycondor/</link>
       <pubDate>Wed, 10 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://jrbourbeau.github.io/posts/dags-with-pycondor/</guid>
+      <guid>https://jrbourbeau.github.io/posts/2018/creating-dags-with-pycondor/</guid>
       <description>Often the need arises to perform a series of tasks that are related to one another. For example, you might have a workflow that&amp;rsquo;s something like &amp;ldquo;do task A, then do task B, and then do task C&amp;rdquo;. These dependencies, task A must be done before task B and task B must be done before task C, can be encapsulated in a directed acyclic graph (DAG). There are many libraries and frameworks for constructing and executing DAGs.</description>
     </item>
     
     <item>
       <title>Reproducible Research with Python</title>
-      <link>https://jrbourbeau.github.io/posts/reproducible-research/</link>
+      <link>https://jrbourbeau.github.io/posts/2017/reproducible-research-with-python/</link>
       <pubDate>Tue, 05 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://jrbourbeau.github.io/posts/reproducible-research/</guid>
+      <guid>https://jrbourbeau.github.io/posts/2017/reproducible-research-with-python/</guid>
       <description>I recently gave a talk on reproducible research using Python to a group of fellow graduate students at the Wisconsin IceCube Particle Astrophysics Center. My aim with this talk was to provide an introduction to some software development best practices for scientist.
 Topics covered in the talk include:
  What a Python package is.
@@ -88,20 +88,20 @@ Topics covered in the talk include:
     
     <item>
       <title>HTCondor made easy with PyCondor</title>
-      <link>https://jrbourbeau.github.io/posts/pycondor/</link>
+      <link>https://jrbourbeau.github.io/posts/2017/htcondor-made-easy-with-pycondor/</link>
       <pubDate>Mon, 06 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://jrbourbeau.github.io/posts/pycondor/</guid>
+      <guid>https://jrbourbeau.github.io/posts/2017/htcondor-made-easy-with-pycondor/</guid>
       <description>HTCondor is a an open-source framework for high throughput computing developed at the University of Wisconsin&amp;mdash;Madison. It&amp;rsquo;s an incredibly useful and versatile tool that I rely on heavily in my everyday work. However, I&amp;rsquo;ve found when the number of jobs becomes large (especially when there are interrelated jobs), actually making the job submission files can become a pain.
 This prompted me to make PyCondor (Python HTCondor), a tool that helps build and submit HTCondor jobs in a straight-forward manner with minimal hassle.</description>
     </item>
     
     <item>
       <title>Survey of some built-in types in Python</title>
-      <link>https://jrbourbeau.github.io/posts/introduction-to-built-in-types-python/</link>
+      <link>https://jrbourbeau.github.io/posts/2016/survey-of-some-built-in-types-in-python/</link>
       <pubDate>Wed, 05 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://jrbourbeau.github.io/posts/introduction-to-built-in-types-python/</guid>
+      <guid>https://jrbourbeau.github.io/posts/2016/survey-of-some-built-in-types-in-python/</guid>
       <description>I put together a Jupyter notebook that covers several of the commonly used built-in type in Python. The notebook can be found on GitHub or nbviewer.</description>
     </item>
     
