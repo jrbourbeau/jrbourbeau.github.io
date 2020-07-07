@@ -2,8 +2,8 @@
 title = "About Me"
 +++
 
-I'm a Software Engineer at [Quansight](https://www.quansight.com) where I contribute to and help maintain projects in the scientific Python ecosystem. I also work on consulting projects to help clients leverage open-source tools for data science applications. Details on my open-source contributions are available on <a href="https://github.com/jrbourbeau">GitHub</a>.
+I'm a Software Engineer at [Coiled](https://coiled.io/) where I focus on scaling Python and helping clients leverage open-source tools for data science applications. I'm also a maintainer and core developer of [Dask](https://dask.org/), a Python library for parallel and distributed computing. Details about my open-source work are available on [GitHub](https://github.com/jrbourbeau).
 
-Additionally, I co-organizer the monthly <a href="https://madpy.com">MadPy</a> Python meetup.
+Additionally, I co-organizer the monthly [Madpy](https://madpy.com) Python meetup in Madison, WI.
 
 I hold a Ph.D. and M.S. from the University of Wisconsin-Madison where I studied experimental astrophysics as a member of the IceCube collaboration. Previously I attended the University of Texas at Arlington where I received a B.S. in Physics.

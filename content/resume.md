@@ -29,14 +29,18 @@ University of Texas at Arlington
 
 ## Professional Experience
 
+#### Coiled Computing
+Software Engineer / June 2020 &mdash; Present / Remote
+
+
 #### Quansight
-Software Engineer / June 2019 &mdash; Present / Madison, WI
+Software Engineer / June 2019 &mdash; July 2020 / Remote
 
 - Contributed to and helped maintain projects in the open-source scientific Python ecosystem
 - Worked on consulting projects to help clients leverage open-source tools for data science applications
 
 
-Support Engineer / Oct 2018 &mdash; May 2019 / Madison, WI
+Support Engineer / Oct 2018 &mdash; May 2019 / Remote
 
 
 - Collaborated with data scientists and software engineers to scale data analysis workflows on distributed platforms
