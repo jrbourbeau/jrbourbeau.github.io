@@ -6,10 +6,20 @@
     <description>Recent content on James Bourbeau</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 26 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://jrbourbeau.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Science Thursday: A tour of Coiled</title>
+      <link>https://jrbourbeau.github.io/posts/2020/science-thursday-a-tour-of-coiled/</link>
+      <pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://jrbourbeau.github.io/posts/2020/science-thursday-a-tour-of-coiled/</guid>
+      <description>A couple of weeks ago I sat down with Hugo Bowne-Anderson to discuss the ins and outs of Coiled Cloud, a deployment-as-a-service project for scalable computing that we&amp;rsquo;re building at Coiled.
+ YouTube recording: https://www.youtube.com/watch?v=wKTkjYHCoKo Materials presented: https://github.com/jrbourbeau/st-tour-de-coiled Coiled documentation: https://docs.coiled.io  </description>
+    </item>
     
     <item>
       <title>Trigger &amp; Skipping CI services</title>
