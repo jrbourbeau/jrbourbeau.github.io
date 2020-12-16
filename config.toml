@@ -9,7 +9,6 @@ defaultcontentlanguage = "en"
 paginate = 20
 canonifyurls = true
 
-pygmentsstyle = "colorful"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
@@ -28,26 +27,21 @@ googleAnalytics = "UA-130389564-1"
     favicon_16 = "images/favicon-16x16.png"
     favicon_32 = "images/favicon-32x32.png"
 
-    footercontent = " "
-
     dateformat = "January 2, 2006"
 
     hideCredits = true
     hideCopyright = true
+    footerContent = "<i class='fa fa-code'></i> on <a href='https://github.com/jrbourbeau/jrbourbeau.github.io'>GitHub</a> <i class='fa fa-github'></i>"
 
     rtl = false
 
-    # Use inverted colors
-    colorscheme = "light"
+    colorScheme = "auto"
 
     # Series see also post count
     maxSeeAlsoItems = 5
 
     # Custom CSS
-    custom_css = ["css/custom.css"]
-    
-    # Custom JS
-    custom_js = []
+    customCSS = ["css/custom.css"]
 
 [taxonomies]
   category = "categories"
@@ -56,38 +50,31 @@ googleAnalytics = "UA-130389564-1"
 
 [[params.social]]
     name = "Github"
-    icon = "fab fa-github"
+    icon = "fa fa-github fa-2x"
     weight = 1
     url = "https://github.com/jrbourbeau/"
 [[params.social]]
     name = "Twitter"
-    icon = "fab fa-twitter"
-    weight = 3
+    icon = "fa fa-twitter fa-2x"
+    weight = 2
     url = "https://twitter.com/__jrbourbeau__/"
 [[params.social]]
     name = "LinkedIn"
-    icon = "fab fa-linkedin"
-    weight = 2
+    icon = "fa fa-linkedin fa-2x"
+    weight = 3
     url = "https://www.linkedin.com/in/jrbourbeau/"
 
+[[menu.main]]
+name = "About"
+weight = 1
+url = "about/"
 
-[languages]
-    [languages.en]
-        languagename = "English"
+[[menu.main]]
+name = "Blog"
+weight = 2
+url = "posts/"
 
-        [languages.en.menu]
-
-            [[languages.en.menu.main]]
-            name = "About"
-            weight = 1
-            url = "about/"
-
-            [[languages.en.menu.main]]
-            name = "Blog"
-            weight = 2
-            url = "posts/"
-
-            [[languages.en.menu.main]]
-            name = "Résumé"
-            weight = 5
-            url = "resume/"
+[[menu.main]]
+name = "Résumé"
+weight = 5
+url = "resume/"
