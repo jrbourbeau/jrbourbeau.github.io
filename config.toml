@@ -14,7 +14,7 @@ pygmentscodefencesguesssyntax = true
 googleAnalytics = "UA-130389564-1"
 
 [permalinks]
-  posts = "/:section/:year/:title/"
+  posts = "/:section/:title/"
 
 [params]
     author = "James Bourbeau"
