@@ -1,7 +1,9 @@
 ---
 title: Creating Dask Performance Reports
-date: 2021-05-19
+date: 2021-05-28
 ---
+
+## Dask's dashboard is great, but temporary
 
 [Dask](https://dask.org/) has a great set of built-in diagnostic tools. In particular,
 Dask's [dashboard](https://distributed.dask.org/en/latest/diagnosing-performance.html)
@@ -17,17 +19,21 @@ the cluster shuts down. This puts Dask users in a situation where they have to t
 screenshots of their dashboard or, worse yet, try to remember what the task stream plot
 looked like during a certain part of their computation.
 
+## Performance reports can help
+
 Fortunately, Dask has the ability to create
 [performance reports](https://distributed.dask.org/en/latest/diagnosing-performance.html#performance-reports)
-which save dashboard plots, information about your cluster, and the code that was used to
+which saves dashboard plots, information about your cluster, and the code that was used to
 generate the report to a static HTML file which you can refer back to later or share with
 colleagues. Having such an artifact is particularly valuable when benchmarking or profiling
 a computation or workflow.
 
 ![Alt Text](/images/live-performance-report.gif)
 
+## How to create a performance report
+
 Generating a performance report involves wrapping your normal Dask code in a
-`performance_report` context manager:
+[`performance_report` context manager](https://distributed.dask.org/en/latest/api.html#distributed.performance_report):
 
 ```python
 import dask.array as da
@@ -47,5 +53,5 @@ with performance_report(filename="my_report.html"):
 This will create a report with information about your cluster during the time the code
 inside the `performance_report` context block was running.
 
-And that's it! Go forth and use performance reports.
+And that's it! Go forth and use performance reports 🎉
 
