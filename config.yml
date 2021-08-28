@@ -1,0 +1,43 @@
+baseURL: http://example.org/
+languageCode: en-us
+title: James Bourbeau
+theme: "PaperMod"
+paginate: 5
+permalinks:
+  posts: "/:section/:title/"
+
+params:
+  ShowCodeCopyButtons: true
+  profileMode:
+    enabled: true # needs to be explicitly set
+    title: "Hi, I'm James \U0001F44B"
+    imageUrl: "images/image.jpg"
+    imageWidth: 200
+    imageHeight: 200
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/jrbourbeau"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/jrbourbeau"
+    - name: twitter
+      url: "https://twitter.com/__jrbourbeau__"
+  
+  assets:
+    favicon16x16: "images/favicon-16x16.png"
+    favicon32x32: "images/favicon-32x32.png"
+
+menu:
+  main:
+    - identifier: about
+      name: About
+      url: about/
+      weight: 10
+    - identifier: blog
+      name: Blog
+      url: posts/
+      weight: 20
+    - identifier: resume
+      name: Résumé
+      url: resume/
+      weight: 30
