@@ -11,7 +11,7 @@ GitHub. This can feel pretty tedious.
 
 ### Example: New contributors
 
-For example, when a first-time contributor has a PR merged to a project I work on,
+When a first-time contributor has a PR merged to a project I work on,
 I'll usually leave a comment like:
 
 > Also, I noticed this is your first code contribution to this repository. Welcome!
