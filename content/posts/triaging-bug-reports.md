@@ -6,6 +6,11 @@ date: 2023-01-19
 Triaging bug reports is an important part of maintaining a library. This post lists some of my
 thoughts on how to triage effectively.
 
+I should note that what's outlined here may not apply to your situation. Best practices
+vary depending on the size of your project, its funding model, the culture of the larger surrounding
+ecosystem, etc. The post is based on my experience maintaining [dask](https://www.dask.org/) and
+other libraries in the PyData ecosystem.
+
 ## Be welcoming
 
 Bug reports are a valuable source of information about pain points users are facing and highlight areas
