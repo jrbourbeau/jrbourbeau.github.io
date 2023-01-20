@@ -31,7 +31,7 @@ on GitHub as collapsable sections of text):
 </details>
 ~~~
 
-This is nice, for example, including a long traceback in a comment. The downside is
+This is nice, for example, when including a long traceback in a comment. The downside is
 there's quite a bit of boilerplate you need to remember and type.
 
 ## Solution
