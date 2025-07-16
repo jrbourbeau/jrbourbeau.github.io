@@ -2,14 +2,20 @@
 title = "About Me"
 +++
 
-I'm the Lead Open Source Engineer at [Coiled](https://coiled.io/) where I focus on
-scalable Python open source computing. I'm also a maintainer and core developer of
-[Dask](https://dask.org/), a Python library for parallel and distributed computing.
-Details about my open source work are available on [GitHub](https://github.com/jrbourbeau).
 
-Additionally, I co-organizer the monthly [Madpy](https://madpy.com) Python meetup
-in Madison, WI.
+Hi, I’m James 👋
 
-I hold a Ph.D. and M.S. from the University of Wisconsin-Madison where I studied
-experimental astrophysics as a member of the IceCube collaboration. Previously I
-attended the University of Texas at Arlington where I received a B.S. in Physics.
+I’m a Staff Engineer at [Coiled](https://www.coiled.io). 
+At Coiled I focus on helping data scientists / data engineers / ML engineers deploy and scale their workloads on cloud hardware.
+I do this through a combination of engineering, solution architecture, customer support, and evangelism. 
+
+Prior to that, I was a Software Engineer at [Quansight](https://quansight.com), where I collaborated with customers to scale data analysis workflows on distributed platforms. I also worked on several projects in the PyData ecosystem (Dask, Numba, Zarr).
+
+Prior to that, I was a graduate researcher at the University of Wisconsin-Madison
+where I received my PhD in experimental astrophysics as a member of the [IceCube Neutrino Observatory](https://icecube.wisc.edu).
+
+A large portion of my professional life has focused on the open source Python data ecosystem. In particular, I'm a core maintainer of [Dask](https://www.dask.org), a library for scalable computing, and contribute to other projects like [Zarr](https://zarr.dev), [Numba](https://numba.pydata.org), [Xarray](https://xarray.dev), and [more](https://github.com/jrbourbeau). 
+
+I also frequently [talk](/talks) at conferences and meetups.
+
+If you'd like to connect, feel free to reach out on [LinkedIn](https://www.linkedin.com/in/jrbourbeau/). 

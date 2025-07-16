@@ -30,14 +30,14 @@ params:
 menu:
   main:
     - identifier: about
-      name: About
+      name: Home 
       url: about/
       weight: 10
-    - identifier: blog
-      name: Blog
+    - identifier: posts
+      name: Posts
       url: posts/
       weight: 20
     - identifier: resume
       name: Résumé
       url: resume/
-      weight: 30
+      weight: 40
