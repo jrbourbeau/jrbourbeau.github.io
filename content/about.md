@@ -5,9 +5,11 @@ title = "About Me"
 
 Hi, I’m James 👋
 
-I’m a Staff Engineer at [Coiled](https://www.coiled.io). 
-At Coiled I focus on helping data scientists / data engineers / ML engineers deploy and scale their workloads on cloud hardware.
-I do this through a combination of engineering, solution architecture, customer support, and evangelism. 
+I'm a Senior Solutions Architect at [NVIDIA](https://www.nvidia.com) where I focus on high-performance data processing and analytics for generative AI.
+
+Prior to that, I was a Staff Engineer at [Coiled](https://www.coiled.io). 
+At Coiled I focused on helping data scientists / data engineers / ML engineers deploy and scale their workloads on cloud hardware.
+I did this through a combination of engineering, solution architecture, customer support, and evangelism. 
 
 Prior to that, I was a Software Engineer at [Quansight](https://quansight.com), where I collaborated with customers to scale data analysis workflows on distributed platforms. I also worked on several projects in the PyData ecosystem (Dask, Numba, Zarr).
 
